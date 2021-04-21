@@ -62,3 +62,18 @@ train_tags_lists, train_words_lists = get_data_lists('E:/train_data.txt')
 word2id = build_dict(train_words_lists)
 tag2id = build_dict(train_tags_lists)
 
+import torch
+class HMM(object):
+    def __init__(self, tag2id, word2id):
+        N = len(tag2id)
+        M = len(word2id)
+        self.N = N
+        self.M = M
+        # A是状态概率转移矩阵，B是观测概率矩阵，Pi初始概率矩阵
+        self.A = torch.zeros(N, N)
+        self.B = torch.zeros(N, M)
+        self.Pi = torch.zeros(N)
+
+
+
+
